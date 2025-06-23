@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reserva_paquetes",
+  "info": {
+    "singularName": "reserva-paquete",
+    "pluralName": "reserva-paquetes",
+    "displayName": "reserva_paquete"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "precio_total": {
+      "type": "decimal"
+    },
+    "fecha_reserva": {
+      "type": "date"
+    },
+    "estado": {
+      "type": "string"
+    },
+    "users_Colect": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "reserva_paquetes"
+    },
+    "reserva_paquete_lineas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::reserva-paquete-linea.reserva-paquete-linea",
+      "mappedBy": "reserva_paquete"
+    }
+  }
+}

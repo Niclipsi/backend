@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reserva_paquete_lineas",
+  "info": {
+    "singularName": "reserva-paquete-linea",
+    "pluralName": "reserva-paquete-lineas",
+    "displayName": "reserva_paquete_linea"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "precioTdeLinea": {
+      "type": "decimal"
+    },
+    "cantidad": {
+      "type": "integer"
+    },
+    "paquetes_turismos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::paquetes-turismo.paquetes-turismo",
+      "mappedBy": "reserva_paquete_linea"
+    },
+    "reserva_paquete": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::reserva-paquete.reserva-paquete",
+      "inversedBy": "reserva_paquete_lineas"
+    }
+  }
+}
