@@ -410,6 +410,38 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiHotelesHoteles extends Struct.CollectionTypeSchema {
+  collectionName: 'hoteless';
+  info: {
+    displayName: 'hoteles ';
+    pluralName: 'hoteless';
+    singularName: 'hoteles';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    descripcion: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hoteles.hoteles'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    servicios: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::servicios.servicios'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPaquetesTurismoPaquetesTurismo
   extends Struct.CollectionTypeSchema {
   collectionName: 'paquetes_turismos';
@@ -527,6 +559,69 @@ export interface ApiReservaPaqueteReservaPaquete
       'manyToOne',
       'plugin::users-permissions.user'
     >;
+  };
+}
+
+export interface ApiServiciosServicios extends Struct.CollectionTypeSchema {
+  collectionName: 'servicioss';
+  info: {
+    displayName: 'servicios';
+    pluralName: 'servicioss';
+    singularName: 'servicios';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Aire_Acondicionado: Schema.Attribute.Boolean;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Desayuno: Schema.Attribute.Boolean;
+    Estacionamiento: Schema.Attribute.Boolean;
+    Gimnasio: Schema.Attribute.Boolean;
+    hoteles: Schema.Attribute.Relation<'manyToMany', 'api::hoteles.hoteles'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::servicios.servicios'
+    > &
+      Schema.Attribute.Private;
+    Piscina: Schema.Attribute.Boolean;
+    publishedAt: Schema.Attribute.DateTime;
+    Restaurant: Schema.Attribute.Boolean;
+    Spa: Schema.Attribute.Boolean;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Wifi: Schema.Attribute.Boolean;
+  };
+}
+
+export interface ApiVuelosVuelos extends Struct.CollectionTypeSchema {
+  collectionName: 'vueloss';
+  info: {
+    displayName: 'vuelos';
+    pluralName: 'vueloss';
+    singularName: 'vuelos';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::vuelos.vuelos'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1043,9 +1138,12 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::hoteles.hoteles': ApiHotelesHoteles;
       'api::paquetes-turismo.paquetes-turismo': ApiPaquetesTurismoPaquetesTurismo;
       'api::reserva-paquete-linea.reserva-paquete-linea': ApiReservaPaqueteLineaReservaPaqueteLinea;
       'api::reserva-paquete.reserva-paquete': ApiReservaPaqueteReservaPaquete;
+      'api::servicios.servicios': ApiServiciosServicios;
+      'api::vuelos.vuelos': ApiVuelosVuelos;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

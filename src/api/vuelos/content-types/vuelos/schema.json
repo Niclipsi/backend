@@ -1,0 +1,14 @@
+{
+  "kind": "collectionType",
+  "collectionName": "vueloss",
+  "info": {
+    "singularName": "vuelos",
+    "pluralName": "vueloss",
+    "displayName": "vuelos"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {}
+}

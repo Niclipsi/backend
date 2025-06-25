@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "servicioss",
+  "info": {
+    "singularName": "servicios",
+    "pluralName": "servicioss",
+    "displayName": "servicios"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Wifi": {
+      "type": "boolean"
+    },
+    "Restaurant": {
+      "type": "boolean"
+    },
+    "Estacionamiento": {
+      "type": "boolean"
+    },
+    "Piscina": {
+      "type": "boolean"
+    },
+    "Gimnasio": {
+      "type": "boolean"
+    },
+    "Aire_Acondicionado": {
+      "type": "boolean"
+    },
+    "Spa": {
+      "type": "boolean"
+    },
+    "Desayuno": {
+      "type": "boolean"
+    },
+    "hoteles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::hoteles.hoteles",
+      "inversedBy": "servicios"
+    }
+  }
+}
